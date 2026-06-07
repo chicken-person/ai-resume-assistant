@@ -3,5 +3,7 @@ __pycache__/
 .venv/
 .env
 data/chroma_db/
+data/test_resume.pdf
+data/extracted_resume.txt
 *.log
 .DS_Store

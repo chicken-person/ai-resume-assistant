@@ -4,9 +4,68 @@
 
 针对应届生设计的专业工具：上传 PDF 简历 → 输入目标岗位 → 使用**免费 DeepSeek** 给出**具体可执行**的优化建议和 bullet 改写。
 
-> **重要提示（GitHub 克隆用户必看）**  
-> 直接克隆后运行 `streamlit run app.py` 会报错！  
-> **必须先安装依赖**，请严格按照下方「快速开始」步骤操作。
+> **⚠️ 重要提示（GitHub 克隆用户必看）**  
+> 直接克隆后运行 `streamlit run app.py` **一定会报错**！  
+> 请**严格按照下方「保姆级部署指南（复制粘贴即可成功）」**操作，包含检查步骤，确保 100% 成功。
+
+---
+
+## 🛡️ 保姆级部署指南（复制粘贴即可 100% 成功）
+
+**Windows 用户推荐流程（最稳）**：
+
+```powershell
+# 1. 克隆项目
+git clone https://github.com/chicken-person/ai-resume-assistant.git
+cd ai-resume-assistant
+
+# 2. 一键安装依赖（强烈推荐）
+.\setup.ps1
+
+# 3. 配置 DeepSeek 免费 Key（必须）
+# 打开 .env 文件，填入你的 Key
+notepad .env
+# 去 https://platform.deepseek.com/api_keys 注册并创建免费 Key（sk- 开头）
+
+# 4. 运行检查程序（确保一切就绪）
+.\check_install.ps1
+
+# 5. 启动应用（检查通过后执行）
+streamlit run app.py
+```
+
+**检查程序会告诉你：**
+- Python 版本是否合格
+- 虚拟环境是否正确激活
+- 所有依赖是否安装
+- .env 中的 DeepSeek Key 是否正确配置
+- 核心模块是否能正常导入
+
+只有所有检查通过（显示 🎉 所有检查通过），你才能成功运行应用。
+
+**如果检查失败**，按照提示修复后，**再次运行** `.\check_install.ps1` 直到通过。
+
+---
+
+## 其他系统部署
+
+```bash
+# macOS / Linux
+git clone https://github.com/chicken-person/ai-resume-assistant.git
+cd ai-resume-assistant
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# 编辑 .env 填入 DeepSeek Key
+cp .env.example .env
+nano .env
+
+# 手动检查（或参考 check_install.ps1 逻辑）
+python -c "from resume_parser import process_resume; print('✅ 模块导入成功')"
+
+streamlit run app.py
+```
 
 ---
 
@@ -29,51 +88,15 @@
 
 ---
 
-## 🚀 快速开始（GitHub 克隆后必看）
+## 传统快速开始（已整合到上方保姆级指南）
 
-### 第一步：安装依赖（最容易踩坑的地方）
+请直接参考上方 **「保姆级部署指南（复制粘贴即可 100% 成功）」**，它包含了检查程序，成功率最高。
 
-```powershell
-# 进入项目目录
-cd ai-resume-assistant
-
-# 推荐使用虚拟环境
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1          # Windows PowerShell
-
-# 安装所有依赖（必须执行这一步！）
-pip install -r requirements.txt
-```
-
-**或者使用我们提供的一键脚本（推荐 Windows 用户）：**
-
-```powershell
-.\setup.ps1
-```
-
-之后可以直接双击 `start.ps1` 启动应用（会自动激活环境）。
-
-### 第二步：配置 DeepSeek 免费 API Key（必须）
-
-1. 打开 [https://platform.deepseek.com/](https://platform.deepseek.com/)
-2. 用微信/手机号注册（新用户自动获得大量免费 Token 额度）
-3. 进入 **API Keys** → 创建新 Key
-4. 复制 Key（以 `sk-` 开头）
-
-在项目根目录创建 `.env` 文件（或直接编辑已生成的 `.env`）：
-
-```env
-DEEPSEEK_API_KEY=sk-你的免费key
-DEEPSEEK_MODEL=deepseek-chat
-```
-
-### 第三步：启动应用
-
-```powershell
-streamlit run app.py
-```
-
-浏览器会自动打开 `http://localhost:8501`。
+传统步骤（仅供参考）：
+1. `.\setup.ps1`
+2. 编辑 `.env` 填入 DeepSeek Key
+3. `.\check_install.ps1` （必须！）
+4. `streamlit run app.py` （仅在检查通过后）。
 
 ---
 
