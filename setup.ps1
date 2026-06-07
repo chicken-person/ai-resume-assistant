@@ -39,10 +39,14 @@ if (-not (Test-Path ".env")) {
 Write-Host ""
 Write-Host "✅ Setup complete!" -ForegroundColor Green
 Write-Host ""
-Write-Host "Next steps:" -ForegroundColor Cyan
-Write-Host "1. Edit .env and paste your DeepSeek API Key"
-Write-Host "2. Run the app:"
+Write-Host "下一步操作：" -ForegroundColor Cyan
+Write-Host "1. 编辑 .env 文件，填入你的 DeepSeek API Key（必须！）"
+Write-Host "   Get free key: https://platform.deepseek.com/api_keys"
+Write-Host ""
+Write-Host "2. 启动应用："
 Write-Host "   streamlit run app.py"
 Write-Host ""
-Write-Host "Or run: .\.venv\Scripts\Activate.ps1; streamlit run app.py" -ForegroundColor Yellow
+Write-Host "提示：以后每次打开新终端都要先激活环境：" -ForegroundColor Yellow
+Write-Host "   .\.venv\Scripts\Activate.ps1"
+Write-Host "   streamlit run app.py"
 Write-Host ""

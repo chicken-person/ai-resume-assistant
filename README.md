@@ -4,6 +4,10 @@
 
 针对应届生设计的专业工具：上传 PDF 简历 → 输入目标岗位 → 使用**免费 DeepSeek** 给出**具体可执行**的优化建议和 bullet 改写。
 
+> **重要提示（GitHub 克隆用户必看）**  
+> 直接克隆后运行 `streamlit run app.py` 会报错！  
+> **必须先安装依赖**，请严格按照下方「快速开始」步骤操作。
+
 ---
 
 ## ✨ 核心价值
@@ -25,38 +29,51 @@
 
 ---
 
-## 🚀 快速开始
+## 🚀 快速开始（GitHub 克隆后必看）
 
-### 1. 安装依赖
+### 第一步：安装依赖（最容易踩坑的地方）
 
-```bash
+```powershell
+# 进入项目目录
 cd ai-resume-assistant
+
+# 推荐使用虚拟环境
 python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1          # Windows PowerShell
+
+# 安装所有依赖（必须执行这一步！）
 pip install -r requirements.txt
 ```
 
-### 2. 配置 DeepSeek 免费 Key（必须）
+**或者使用我们提供的一键脚本（推荐 Windows 用户）：**
+
+```powershell
+.\setup.ps1
+```
+
+之后可以直接双击 `start.ps1` 启动应用（会自动激活环境）。
+
+### 第二步：配置 DeepSeek 免费 API Key（必须）
 
 1. 打开 [https://platform.deepseek.com/](https://platform.deepseek.com/)
-2. 使用微信/手机号注册（新用户送大量免费 Token）
+2. 用微信/手机号注册（新用户自动获得大量免费 Token 额度）
 3. 进入 **API Keys** → 创建新 Key
 4. 复制 Key（以 `sk-` 开头）
 
-在项目根目录创建 `.env` 文件：
+在项目根目录创建 `.env` 文件（或直接编辑已生成的 `.env`）：
 
 ```env
 DEEPSEEK_API_KEY=sk-你的免费key
 DEEPSEEK_MODEL=deepseek-chat
 ```
 
-### 3. 启动应用（推荐）
+### 第三步：启动应用
 
-```bash
+```powershell
 streamlit run app.py
 ```
 
-浏览器会自动打开 `http://localhost:8501`
+浏览器会自动打开 `http://localhost:8501`。
 
 ---
 

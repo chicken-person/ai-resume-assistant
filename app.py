@@ -4,17 +4,42 @@ AI Resume Assistant - Streamlit 主界面
 真正实用、专业的简历优化工具
 """
 import os
-import streamlit as st
+import sys
+
+# 必须先导入 streamlit，否则无法显示友好错误
+try:
+    import streamlit as st
+except ImportError:
+    print("❌ 缺少 streamlit，请先执行：pip install -r requirements.txt")
+    sys.exit(1)
+
 from dotenv import load_dotenv
 
-from resume_parser import process_resume
-from rag_engine import (
-    index_resume,
-    get_full_resume_text,
-    analyze_resume_for_target_job,
-    chat_with_resume,
-    generate_downloadable_report
-)
+# 导入本地模块 + 依赖检查（给克隆用户清晰提示）
+try:
+    from resume_parser import process_resume
+    from rag_engine import (
+        index_resume,
+        get_full_resume_text,
+        analyze_resume_for_target_job,
+        chat_with_resume,
+        generate_downloadable_report
+    )
+except ImportError as e:
+    st.error(
+        "❌ **依赖未安装或安装不完整！**\n\n"
+        "请按以下步骤操作：\n\n"
+        "1. 确保你已经执行过：\n"
+        "   ```\n"
+        "   pip install -r requirements.txt\n"
+        "   ```\n\n"
+        "2. 激活虚拟环境（推荐）：\n"
+        "   Windows: `.\\.venv\\Scripts\\Activate.ps1`\n\n"
+        "3. 然后重新运行：\n"
+        "   `streamlit run app.py`\n\n"
+        f"详细错误：{e}"
+    )
+    st.stop()
 
 load_dotenv()
 
