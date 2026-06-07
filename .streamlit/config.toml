@@ -1,0 +1,17 @@
+[server]
+# Allow public access when using --server.address 0.0.0.0
+enableCORS = true
+enableXsrfProtection = true
+
+# Increase timeout for first-time model download (embedding model is large)
+maxUploadSize = 100
+
+[theme]
+primaryColor = "#1e40af"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f8fafc"
+textColor = "#0f172a"
+
+[browser]
+# For deployment
+gatherUsageStats = false

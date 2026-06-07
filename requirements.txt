@@ -1,0 +1,31 @@
+# AI Resume Assistant - Production Ready
+# Python >= 3.10
+
+# Web & UI
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+streamlit>=1.40.0
+python-multipart>=0.0.12
+
+# PDF
+pypdf>=5.1.0
+
+# LangChain + RAG
+langchain>=0.3.7
+langchain-core>=0.3.21
+langchain-text-splitters>=0.3.2
+langchain-chroma>=0.1.4
+chromadb>=0.5.17
+
+# DeepSeek (via OpenAI compatible)
+langchain-openai>=0.2.8
+openai>=1.54.0
+
+# Utils
+python-dotenv>=1.0.1
+pydantic>=2.10.0
+
+# Note:
+# - DeepSeek is the primary LLM (free tier available)
+# - First run downloads embedding model for Chroma
+# - No torch needed for basic use (CPU embedding is fine)
